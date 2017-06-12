@@ -1,0 +1,12 @@
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\bin\Debug\ResalaSystem.exe.config
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\bin\Debug\ResalaSystem.exe
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\bin\Debug\ResalaSystem.pdb
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.csprojResolveAssemblyReference.cache
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.Form1.resources
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.Properties.Resources.resources
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.csproj.GenerateResource.Cache
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.exe
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.pdb
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\bin\Debug\Bunifu_UI_v1.4.dll
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.Guest.resources
+c:\users\mrhacker\documents\visual studio 2017\Projects\ResalaSystem\ResalaSystem\obj\Debug\ResalaSystem.Teacher.resources
