@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="resalaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="answer_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="question_id" Type="Int32" />
+    <NavigationProperty Name="question" Relationship="Self.FK__answer__question__440B1D61" FromRole="answer" ToRole="question" />
+  </EntityType>
+  <EntityType Name="choice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="choice_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="question_id" Type="Int32" />
+    <NavigationProperty Name="question" Relationship="Self.FK__choice__question__412EB0B6" FromRole="choice" ToRole="question" />
+  </EntityType>
+  <EntityType Name="course">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="course_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="course_description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="questions" Relationship="Self.FK__question__course__3E52440B" FromRole="course" ToRole="question" />
+    <NavigationProperty Name="students" Relationship="Self.FK__student__course___46E78A0C" FromRole="course" ToRole="student" />
+  </EntityType>
+  <EntityType Name="question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="question_desc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="course_id" Type="Int32" />
+    <NavigationProperty Name="answers" Relationship="Self.FK__answer__question__440B1D61" FromRole="question" ToRole="answer" />
+    <NavigationProperty Name="choices" Relationship="Self.FK__choice__question__412EB0B6" FromRole="question" ToRole="choice" />
+    <NavigationProperty Name="course" Relationship="Self.FK__question__course__3E52440B" FromRole="question" ToRole="course" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="score" Type="Int32" />
+    <Property Name="course_id" Type="Int32" />
+    <NavigationProperty Name="course" Relationship="Self.FK__student__course___46E78A0C" FromRole="student" ToRole="course" />
+  </EntityType>
+  <EntityType Name="teacher">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__answer__question__440B1D61">
+    <End Role="question" Type="Self.question" Multiplicity="0..1" />
+    <End Role="answer" Type="Self.answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="answer">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__choice__question__412EB0B6">
+    <End Role="question" Type="Self.question" Multiplicity="0..1" />
+    <End Role="choice" Type="Self.choice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="choice">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__question__course__3E52440B">
+    <End Role="course" Type="Self.course" Multiplicity="0..1" />
+    <End Role="question" Type="Self.question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="course">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="question">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__student__course___46E78A0C">
+    <End Role="course" Type="Self.course" Multiplicity="0..1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="course">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="resalaEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="answers" EntityType="Self.answer" />
+    <EntitySet Name="choices" EntityType="Self.choice" />
+    <EntitySet Name="courses" EntityType="Self.course" />
+    <EntitySet Name="questions" EntityType="Self.question" />
+    <EntitySet Name="students" EntityType="Self.student" />
+    <EntitySet Name="teachers" EntityType="Self.teacher" />
+    <AssociationSet Name="FK__answer__question__440B1D61" Association="Self.FK__answer__question__440B1D61">
+      <End Role="question" EntitySet="questions" />
+      <End Role="answer" EntitySet="answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__choice__question__412EB0B6" Association="Self.FK__choice__question__412EB0B6">
+      <End Role="question" EntitySet="questions" />
+      <End Role="choice" EntitySet="choices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__question__course__3E52440B" Association="Self.FK__question__course__3E52440B">
+      <End Role="course" EntitySet="courses" />
+      <End Role="question" EntitySet="questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__student__course___46E78A0C" Association="Self.FK__student__course___46E78A0C">
+      <End Role="course" EntitySet="courses" />
+      <End Role="student" EntitySet="students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
